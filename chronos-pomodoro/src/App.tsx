@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Container } from './components/Container';
+import { CountDown } from './components/CountDown';
+import { Logo } from './components/Logo';
+import { Menu } from './components/Menu';
+import { DefaultInput } from './components/DefaultInput';
+import { Cycles } from './components/Cycles';
 
-function App() {
-  const [count, setCount] = useState(0)
+import './styles/global.css';
+import './styles/theme.css';
+import { DefaultButton } from './components/DefaultButton';
+import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
+import { Footer } from './components/Footer';
 
+export function App() {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <Container>
+        <Logo />
+      </Container>
 
-export default App
+      <Container>
+        <Menu />
+      </Container>
+
+      <Container>
+        <CountDown />
+      </Container>
+
+      <Container>
+        <form className='form' action=''>
+          <div className='formRow'>
+            <DefaultInput
+              id='meuInput'
+              type='text'
+              labelText='TASK'
+              placeholder='DIgite algo!'
+            />
+          </div>
+
+          <div className='formRow'>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+
+          <div className='formRow'>
+            <Cycles />
+          </div>
+
+          <div className='formRow'>
+            <DefaultButton icon={<PlayCircleIcon />} color='green' />
+            <DefaultButton icon={<StopCircleIcon />} color='red' />
+          </div>
+        </form>
+      </Container>
+
+      <Container>
+        <Footer />
+      </Container>
+    </>
+  );
+}
